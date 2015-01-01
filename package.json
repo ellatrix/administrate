@@ -1,0 +1,27 @@
+{
+  "name": "administrate",
+  "version": "0.1.0",
+  "description": "An alternative JavaScript powered WordPress admin.",
+  "repository": "https://github.com/avryl/administrate",
+  "dependencies": {
+    "react": "0.12.x",
+    "underscore": "1.7.x",
+    "backbone": "1.1.x",
+    "jquery": "2.1.x",
+    "moment": "2.8.x"
+  },
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-browserify": "3.2.x",
+    "grunt-contrib-cssmin": "0.10.x",
+    "grunt-contrib-jshint": "0.10.x",
+    "grunt-contrib-uglify": "0.6.x",
+    "grunt-contrib-watch": "0.6.x",
+    "grunt-cssjanus": "git://github.com/ocean90/grunt-cssjanus.git#97c43554ff7a86e2ff414d34e66725b05118bf10",
+    "grunt-env": "0.4.x",
+    "grunt-jsvalidate": "0.2.x",
+    "matchdep": "0.3.x",
+    "minifyify": "4.4.x"
+  },
+  "author": "Janneke Van Dorpe"
+}

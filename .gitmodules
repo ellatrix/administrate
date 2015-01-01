@@ -1,0 +1,3 @@
+[submodule "WP-API"]
+	path = WP-API
+	url = https://github.com/avryl/WP-API
