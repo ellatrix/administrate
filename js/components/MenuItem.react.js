@@ -9,7 +9,7 @@ module.exports = React.createClass( {
 		return (
 			el( 'li', null,
 				el( A, {
-					href: this.props.href || this.props.text.toLowerCase(),
+					href: this.props.href == null ? this.props.text.toLowerCase() : this.props.href,
 					className: icon + ( this.props.icon || 'admin-' + this.props.text.toLowerCase() )
 				},
 					l10n.__( this.props.text )

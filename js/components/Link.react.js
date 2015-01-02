@@ -62,6 +62,9 @@ module.exports = React.createClass( {
 	isActive: function() {
 		var activeHref = window.location.pathname.substring( window._settings.root.length );
 
-		return this.props.href ? activeHref.substring( 0, this.props.href.length ) === this.props.href && activeHref.charAt( this.props.href.length ) === '/' : ! activeHref;
+		return this.props.href ?
+			activeHref.substring( 0, this.props.href.length ) === this.props.href &&
+				activeHref.charAt( this.props.href.length ) === '/' :
+			! activeHref;
 	}
 } );

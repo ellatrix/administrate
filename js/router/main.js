@@ -3,7 +3,7 @@ var RouterStore = require( '../stores/RouterStore' );
 
 var Router = Backbone.Router.extend( {
 	routes: {
-		'/': 'dashboard',
+		'(/)': 'dashboard',
 		'posts/': 'posts',
 		'posts/:id/': 'posts',
 		'media/': 'media',
