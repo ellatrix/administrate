@@ -10,7 +10,11 @@ function administrate_get_file( $path ) {
 	return file_get_contents( $path );
 }
 
-$path = urldecode( $_GET['file'] );
+if ( ! isset( $_GET['path'] ) ) {
+	die;
+}
+
+$path = urldecode( $_GET['path'] );
 $ext = substr( strrchr( $path, '.' ), 1 );
 $dir = dirname( __FILE__ ) . '/';
 

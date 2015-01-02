@@ -109,7 +109,7 @@ if ( ! class_exists( 'Administrate' ) ) {
 		}
 
 		function gzip( $path ) {
-			return ( $this->accepts_gzip() && ! $this->is_debugging() ) ? 'gz.php?file=' . urlencode( $path ) : $path;
+			return ( $this->accepts_gzip() && ! $this->is_debugging() ) ? 'gz.php?path=' . urlencode( $path ) : $path;
 		}
 
 		function load() {

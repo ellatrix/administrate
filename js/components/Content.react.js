@@ -31,10 +31,10 @@ module.exports = React.createClass( {
 			buttons = (
 				el( 'div', { className: 'content-buttons' },
 					el( 'button', { type: 'submit', className: 'button' },
-						l10n.__( 'Save Draft')
+						l10n.__( 'Save Draft' )
 					),
 					el( 'button', { type: 'submit', className: 'button button-primary' },
-						l10n.__( 'Publish')
+						l10n.__( 'Publish' )
 					)
 				)
 			);
