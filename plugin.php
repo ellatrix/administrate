@@ -92,6 +92,10 @@ if ( ! class_exists( 'Administrate' ) ) {
 			}
 		}
 
+		function is_dev() {
+			return file_exists( dirname( __FILE__ ) . '/js/bundle.dev.js' );
+		}
+
 		function is_debugging() {
 			return ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) || $this->is_dev();
 		}
@@ -100,15 +104,27 @@ if ( ! class_exists( 'Administrate' ) ) {
 			return $this->is_debugging() ? '' : '.min';
 		}
 
-		function is_dev() {
-			return file_exists( dirname( __FILE__ ) . '/js/bundle.dev.js' );
+		function accepts_gzip() {
+			return isset( $_SERVER['HTTP_ACCEPT_ENCODING'] ) && stripos( $_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip' ) !== false;
+		}
+
+		function gzip( $path ) {
+			return ( $this->accepts_gzip() && ! $this->is_debugging() ) ? 'gz.php?file=' . urlencode( $path ) : $path;
 		}
 
 		function load() {
 			load_textdomain( 'default', WP_LANG_DIR . '/admin-' . get_locale() . '.mo' );
 
-			@header( 'Content-Type: ' . get_option( 'html_type' ) . '; charset=' . get_option( 'blog_charset' ) );
-			$GLOBALS['is_IE'] && @header( 'X-UA-Compatible: IE=edge' );
+			header( 'Content-Type: ' . get_option( 'html_type' ) . '; charset=' . get_option( 'blog_charset' ) );
+
+			if ( $GLOBALS['is_IE'] ) {
+				header( 'X-UA-Compatible: IE=edge' );
+			}
+
+			// We might be sending over 1 MB with l10n.
+			if ( $this->accepts_gzip() ) {
+				ob_start( 'ob_gzhandler' );
+			}
 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -119,13 +135,13 @@ if ( ! class_exists( 'Administrate' ) ) {
 	<body class="wp-core-ui progress">
 		<link rel="stylesheet" href="<?php echo includes_url( 'css/dashicons.css', 'relative' ); ?>" type="text/css" media="all">
 		<div id="root-loader" class="dashicons dashicons-wordpress" style="display:block;width:200px;height:200px;font-size:200px;color:#e0e0e0;position:absolute;top:50%;left:50%;margin-top:-100px;margin-left:-100px;"></div>
-		<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
 		<link rel="stylesheet" href="<?php echo includes_url( 'css/buttons.css', 'relative' ); ?>" type="text/css" media="all">
 		<link rel="stylesheet" href="<?php echo includes_url( 'css/editor.css', 'relative' ); ?>" type="text/css" media="all">
 		<link rel="stylesheet" href="<?php echo admin_url( 'css/forms.css', 'relative' ); ?>" type="text/css" media="all">
-		<link rel="stylesheet" href="<?php echo $this->url( 'css/bundle' . $this->min() . '.css', 'relative' ); ?>" type="text/css" media="all">
+		<link rel="stylesheet" href="<?php echo $this->url( $this->gzip( 'css/bundle' . $this->min() . '.css' ), 'relative' ); ?>" type="text/css" media="all">
 		<div id="root">
-			<script type="text/javascript" src="<?php echo includes_url( 'js/tinymce/tinymce.js', 'relative' ); ?>"></script>
+			<script type="text/javascript" src="https://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
 			<script type="text/javascript" src="<?php echo admin_url( 'js/editor.js', 'relative' ); ?>"></script>
 			<script type="text/javascript">
 				/* <![CDATA[ */
@@ -142,7 +158,7 @@ if ( ! class_exists( 'Administrate' ) ) {
 				window._postStati = <?php echo json_encode( (array) $GLOBALS['wp_post_statuses'] ); ?>;
 				/* ]]> */
 			</script>
-			<script type="text/javascript" src="<?php echo $this->url( 'js/bundle' . ( $this->is_dev() ? '.dev' : $this->min() ) . '.js', 'relative' ); ?>"></script>
+			<script type="text/javascript" src="<?php echo $this->url( $this->gzip( 'js/bundle' . ( $this->is_dev() ? '.dev' : $this->min() ) . '.js' ), 'relative' ); ?>"></script>
 			<?php if ( $this->is_dev() ) { ?><script type="text/javascript" src="//localhost:35729/livereload.js"></script><?php } ?>
 		</div>
 	</body>

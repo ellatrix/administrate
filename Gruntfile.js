@@ -23,6 +23,22 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
+		compress: {
+			options: {
+				mode: 'gzip',
+				level: 9
+			},
+			js: {
+				files: {
+					'js/bundle.min.js.gz': [ 'js/bundle.min.js' ]
+				}
+			},
+			css: {
+				files: {
+					'css/bundle.min.css.gz': [ 'css/bundle.min.css' ]
+				}
+			}
+		},
 		cssmin: {
 			build: {
 				files: {
@@ -59,9 +75,9 @@ module.exports = function( grunt ) {
 			}
 		},
 		uglify: {
-			options: {
-				sourceMap: true
-			},
+			// options: {
+			// 	sourceMap: true
+			// },
 			build: {
 				files: {
 					'js/bundle.min.js': [ 'js/bundle.js' ]
@@ -96,6 +112,7 @@ module.exports = function( grunt ) {
 		'browserify:build',
 		'uglify:build',
 		'jsvalidate:build',
-		'cssmin:build'
+		'cssmin:build',
+		'compress'
 	] );
 };

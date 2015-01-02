@@ -1,3 +1,4 @@
-css/bundle.min.css
+css/bundle*
+!css/bundle.css
 js/bundle*
 node_modules
