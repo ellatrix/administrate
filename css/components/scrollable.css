@@ -8,6 +8,7 @@
 .scrollable.top-shadow ~ .top-shadow,
 .scrollable.bottom-shadow ~ .bottom-shadow {
 	height: 6px;
+	pointer-events: none;
 	position: absolute;
 	top: 0;
 	right: 0;
