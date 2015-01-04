@@ -42,7 +42,7 @@ module.exports = function( grunt ) {
 		cssmin: {
 			build: {
 				files: {
-					'css/bundle.min.css': [ 'css/bundle.css' ]
+					'css/bundle.min.css': [ 'css/index.css' ]
 				}
 			}
 		},

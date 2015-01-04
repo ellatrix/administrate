@@ -1,0 +1,101 @@
+.list {
+	position: absolute;
+	top: 32px;
+	bottom: 0;
+	left: 160px;
+	width: 315px;
+	padding: 5px 0 5px 5px;
+}
+
+.list .the-list {
+	position: absolute;
+	top: 43px;
+	bottom: 5px;
+	/*border: 5px solid transparent;*/
+	border: 1px solid #e5e5e5;
+	margin: 4px;
+	width: 305px;
+	background: #fff;
+}
+
+.list .the-list:focus {
+	/*border-color: rgba( 91, 157, 217, 0.5 );*/
+	outline: none;
+}
+
+.the-list a {
+	box-shadow: 0 -1px 0 rgba( 0, 0, 0, 0.1 );
+	display: block;
+	padding: 10px;
+	padding-left: 14px;
+	color: inherit;
+	text-decoration: none;
+	font-size: 15px;
+}
+
+.the-list a.active {
+	background-color: #f7fcfe;
+	border-left: 4px solid #2ea2cc;
+	padding-left: 10px;
+}
+
+.the-list a.active + a {
+	box-shadow:
+		0 -1px 0 rgba( 0, 0, 0, 0.1 ),
+		inset 0 1px 0 rgba( 0, 0, 0, 0.02 ),
+		inset 0 2px 0 rgba( 0, 0, 0, 0.02 );
+}
+
+.the-list li:last-child a {
+	border-bottom: none;
+}
+
+.the-list a .title {
+	margin-bottom: 10px;
+}
+
+.the-list a .status,
+.the-list a .date {
+	font-size: 13px;
+	display: inline-block;
+}
+
+.the-list a .status {
+	border-radius: 3px;
+	margin-right: 5px;
+	padding: 1px 5px 2px;
+	color: #fff;
+}
+
+.the-list a .date {
+	color: #666;
+}
+
+.the-list a.sheduled .status {
+	background-color: #2ea2cc;
+}
+
+.the-list a.sheduled .date {
+	color: #2ea2cc;
+}
+
+.the-list a.draft .status,
+.the-list a.pending .status {
+	background-color: #d54e21;
+}
+
+.the-list a.draft .date,
+.the-list a.pending .date {
+	color: #d54e21;
+}
+
+.list-options {
+	background: #f1f1f1;
+	padding: 5px;
+}
+
+.list-options input,
+.list-options select {
+	margin: 0;
+	line-height: 20px;
+}

@@ -1,0 +1,4 @@
+body.progress,
+body.progress * {
+	cursor: progress !important;
+}

@@ -1,0 +1,11 @@
+html,
+body {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	background: #f1f1f1;
+	font-family: "Open Sans", sans-serif;
+	margin: 0;
+}

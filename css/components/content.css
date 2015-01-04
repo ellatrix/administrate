@@ -1,0 +1,80 @@
+.content {
+	position: absolute;
+	top: 32px;
+	right: 0;
+	bottom: 0;
+	left: 480px;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+.content-navigation {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 28px;
+	padding: 10px 10px 5px 5px;
+}
+
+.content-navigation .dashicons-admin-collapse {
+	font-size: 24px;
+	float: left;
+	height: 24px;
+	width: 24px;
+	margin: 2px;
+	color: #777;
+	-webkit-transition: all 0.2s;
+	transition: all 0.2s;
+}
+
+.content-buttons {
+	float: right;
+}
+
+.collapse .content-navigation .dashicons-admin-collapse {
+	-webkit-transform: rotate( 180deg );
+	-ms-transform: rotate( 180deg );
+	transform: rotate( 180deg );
+}
+
+.collapse .content {
+	left: 0;
+}
+
+.content-section {
+	position: absolute;
+	top: 47px;
+	right: 10px;
+	bottom: 10px;
+	left: 5px;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+}
+
+.editor-area {
+	position: absolute;
+	top: 37px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.editor-area > h1 {
+	margin: 0;
+}
+
+.title-field {
+	padding: 20px 20px 10px;
+	display: block;
+}
+
+.content-field {
+	padding: 10px 20px 20px;
+}
+
+.mce-edit-focus {
+	outline: none;
+}
