@@ -75,6 +75,11 @@
 	padding: 10px 20px 20px;
 }
 
+.content-field img {
+	max-width: 100%;
+	height: auto;
+}
+
 .mce-edit-focus {
 	outline: none;
 }
