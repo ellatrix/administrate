@@ -112,6 +112,10 @@ if ( ! class_exists( 'Administrate' ) ) {
 			return ( $this->accepts_gzip() && ! $this->is_debugging() ) ? 'gz.php?path=' . urlencode( $path ) : $path;
 		}
 
+		function rtl() {
+			return ! $this->is_debugging() && is_rtl() ? '-rtl' : '';
+		}
+
 		function return_logged_in() {
 			return 'logged_in';
 		}
@@ -122,6 +126,11 @@ if ( ! class_exists( 'Administrate' ) ) {
 			auth_redirect();
 
 			load_textdomain( 'default', WP_LANG_DIR . '/admin-' . get_locale() . '.mo' );
+
+			// Correct the `text_direction` for `src`.
+			if ( strpos( $GLOBALS['wp_version'], '-src' ) ) {
+				$GLOBALS['wp_locale']->text_direction = _x( 'ltr', 'text direction' );
+			}
 
 			header( 'Content-Type: ' . get_option( 'html_type' ) . '; charset=' . get_option( 'blog_charset' ) );
 
@@ -134,20 +143,29 @@ if ( ! class_exists( 'Administrate' ) ) {
 				ob_start( 'ob_gzhandler' );
 			}
 
+			$body_class = array(
+				'wp-core-ui',
+				'progress',
+				is_rtl() ? 'rtl' : 'ltr',
+				'locale-' . sanitize_html_class( strtolower( str_replace( '_', '-', get_locale() ) ) )
+			);
+
+			$body_class = join( $body_class, ' ' );
+
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 	<head>
 		<meta charset="utf-8">
 		<title><?php _e( 'Loading&hellip;' ); ?></title>
 	</head>
-	<body class="wp-core-ui progress">
+	<body class="<?php echo $body_class; ?>">
 		<link rel="stylesheet" href="<?php echo includes_url( 'css/dashicons.css', 'relative' ); ?>" type="text/css" media="all">
 		<div id="root-loader" class="dashicons dashicons-wordpress" style="display:block;width:200px;height:200px;font-size:200px;color:#e0e0e0;position:absolute;top:50%;left:50%;margin-top:-100px;margin-left:-100px;"></div>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&amp;subset=latin%2Clatin-ext" type="text/css" media="all">
 		<link rel="stylesheet" href="<?php echo includes_url( 'css/buttons.css', 'relative' ); ?>" type="text/css" media="all">
 		<link rel="stylesheet" href="<?php echo includes_url( 'css/editor.css', 'relative' ); ?>" type="text/css" media="all">
 		<link rel="stylesheet" href="<?php echo admin_url( 'css/forms.css', 'relative' ); ?>" type="text/css" media="all">
-		<link rel="stylesheet" href="<?php echo $this->url( $this->gzip( 'css/' . ( $this->is_debugging() ? 'index' : 'bundle' ) . $this->min() . '.css' ), 'relative' ); ?>" type="text/css" media="all">
+		<link rel="stylesheet" href="<?php echo $this->url( $this->gzip( 'css/' . ( $this->is_debugging() ? 'index' : 'bundle' ) . $this->rtl() . $this->min() . '.css' ), 'relative' ); ?>" type="text/css" media="all">
 		<div id="root">
 			<script type="text/javascript" src="https://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
 			<script type="text/javascript" src="<?php echo admin_url( 'js/editor.js', 'relative' ); ?>"></script>

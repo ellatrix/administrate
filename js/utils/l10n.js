@@ -11,6 +11,9 @@ module.exports = {
 
 		return this.decodeHTMLEntities( domain.entries[ text ].translations[ _index ] );
 	},
+	_x: function( text, context, domain ) {
+		return this.__( context + '\u0004' + text, domain );
+	},
 	_n: function( single, plural, number, domain ) {
 		number = parseInt( number, 10 );
 		domain = domain || 'default';
@@ -29,6 +32,9 @@ module.exports = {
 		}
 
 		return this.decodeHTMLEntities( domain.entries[ single ].translations[ 1 ] );
+	},
+	isRtl: function() {
+		return this._x( 'ltr', 'text direction' ) === 'rtl';
 	},
 	decodeHTMLEntities: function( string ) {
 		var element;

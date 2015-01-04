@@ -39,6 +39,8 @@ module.exports = React.createClass( {
 			setup: function( editor ) {
 				self.editor = editor;
 
+				editor.editorManager.i18n.rtl = l10n.isRtl();
+
 				editor.editorManager.i18n.translate = function( text ) {
 					return l10n.__( text );
 				};

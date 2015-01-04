@@ -34,8 +34,20 @@ module.exports = function( grunt ) {
 				}
 			},
 			css: {
-				files: {
+				files: [ {
 					'css/bundle.min.css.gz': [ 'css/bundle.min.css' ]
+				}, {
+					'css/bundle-rtl.min.css.gz': [ 'css/bundle-rtl.min.css' ]
+				} ]
+			}
+		},
+		cssjanus: {
+			options: {
+				swapLtrRtlInUrl: false
+			},
+			build: {
+				files: {
+					'css/bundle-rtl.min.css': [ 'css/bundle.min.css' ]
 				}
 			}
 		},
@@ -113,6 +125,7 @@ module.exports = function( grunt ) {
 		'uglify:build',
 		'jsvalidate:build',
 		'cssmin:build',
+		'cssjanus',
 		'compress'
 	] );
 };
