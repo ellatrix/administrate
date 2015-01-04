@@ -67,7 +67,7 @@ module.exports = React.createClass( {
 				el( 'div', { className: 'content-section' },
 					el( 'div', { className: 'editor-toolbar' } ),
 					el( Scrollable, { className: 'editor-area' },
-						el( 'h1', null,
+						el( 'h1', { className: 'title-field-h1' },
 							el( TinyMCE , {
 								className: 'title-field',
 								name: 'title',
