@@ -1,6 +1,7 @@
 html,
 body {
 	height: 100%;
+	overflow: hidden;
 }
 
 body {
@@ -113,11 +114,11 @@ body.progress * {
 	position: absolute;
 	top: 43px;
 	bottom: 5px;
-	overflow: auto;
 	/*border: 5px solid transparent;*/
 	border: 1px solid #e5e5e5;
 	margin: 4px;
 	width: 305px;
+	background: #fff;
 }
 
 .list .the-list:focus {
@@ -126,7 +127,6 @@ body.progress * {
 }
 
 .the-list a {
-	background: #fff;
 	box-shadow: 0 -1px 0 rgba( 0, 0, 0, 0.1 );
 	display: block;
 	padding: 10px;
@@ -224,6 +224,7 @@ body.progress * {
 
 .content-navigation .dashicons-admin-collapse {
 	font-size: 24px;
+	float: left;
 	height: 24px;
 	width: 24px;
 	margin: 2px;

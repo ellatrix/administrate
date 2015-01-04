@@ -1,5 +1,6 @@
 var React = require( 'react' );
 var el = React.createElement;
+var Scrollable = require( './Scrollable.react' );
 var jQuery = require( 'jquery' );
 var TinyMCE = require( './tinymce/tinymce.react' );
 var PostEditStore = require( '../stores/PostEditStore' );
@@ -65,7 +66,7 @@ module.exports = React.createClass( {
 				),
 				el( 'div', { className: 'content-section' },
 					el( 'div', { className: 'editor-toolbar' } ),
-					el( 'div', { className: 'editor-area' },
+					el( Scrollable, { className: 'editor-area' },
 						el( 'h1', null,
 							el( TinyMCE , {
 								className: 'title-field',

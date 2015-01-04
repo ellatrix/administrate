@@ -5,7 +5,7 @@ var RouterStore = require( '../stores/RouterStore' );
 var cx = require( '../utils/cx' );
 
 function addTrailingSlash( string ) {
-	if ( string.substring( string.length - 1, string.length ) === '/' ) {
+	if ( string.slice( string.length - 1 ) === '/' || string.indexOf( '?' ) !== -1 ) {
 		return string;
 	} else {
 		return string + '/';
@@ -60,11 +60,10 @@ module.exports = React.createClass( {
 		}
 	},
 	isActive: function() {
-		var activeHref = window.location.pathname.substring( window._settings.root.length );
+		var activeHref = window.location.pathname.substring( window._settings.root.length ) + window.location.search;
 
 		return this.props.href ?
-			activeHref.substring( 0, this.props.href.length ) === this.props.href &&
-				activeHref.charAt( this.props.href.length ) === '/' :
+			activeHref.substring( 0, this.props.href.length ) === this.props.href :
 			! activeHref;
 	}
 } );

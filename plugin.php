@@ -112,7 +112,15 @@ if ( ! class_exists( 'Administrate' ) ) {
 			return ( $this->accepts_gzip() && ! $this->is_debugging() ) ? 'gz.php?path=' . urlencode( $path ) : $path;
 		}
 
+		function return_logged_in() {
+			return 'logged_in';
+		}
+
 		function load() {
+			add_filter( 'auth_redirect_scheme', array( $this, 'return_logged_in' ) );
+
+			auth_redirect();
+
 			load_textdomain( 'default', WP_LANG_DIR . '/admin-' . get_locale() . '.mo' );
 
 			header( 'Content-Type: ' . get_option( 'html_type' ) . '; charset=' . get_option( 'blog_charset' ) );
@@ -156,6 +164,7 @@ if ( ! class_exists( 'Administrate' ) ) {
 				window._l10n = <?php echo json_encode( (array) $GLOBALS['l10n'] ); ?>;
 				window._start_of_week = window.parseInt( <?php echo json_encode( get_option( 'start_of_week' ) ); ?>, 10 );
 				window._postStati = <?php echo json_encode( (array) $GLOBALS['wp_post_statuses'] ); ?>;
+				window._query = <?php echo ( $query = json_encode( $_GET ) ) === '[]' ? '{}' : $query; ?>;
 				/* ]]> */
 			</script>
 			<script type="text/javascript" src="<?php echo $this->url( $this->gzip( 'js/bundle' . ( $this->is_dev() ? '.dev' : $this->min() ) . '.js' ), 'relative' ); ?>"></script>

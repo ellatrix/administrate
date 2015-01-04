@@ -1,5 +1,6 @@
 var React = require( 'react' );
 var el = React.createElement;
+var Scrollable = require( './Scrollable.react' );
 var ListItem = require( './ListItem.react' );
 var PostsEditStore = require( '../stores/PostsEditStore' );
 
@@ -16,7 +17,8 @@ module.exports = React.createClass( {
 			PostsEditStore.fetch( {
 				data: {
 					context: 'edit',
-					post_status: 'any'
+					post_status: 'any',
+					posts_per_page: window._query.posts_per_page || '30'
 				}
 			} );
 		}
@@ -43,7 +45,7 @@ module.exports = React.createClass( {
 		}
 
 		return (
-			el( 'div', { className: 'the-list', tabIndex: 0 },
+			el( Scrollable, { className: 'the-list' },
 				items
 			)
 		);

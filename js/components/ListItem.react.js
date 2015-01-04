@@ -45,7 +45,7 @@ module.exports = React.createClass( {
 		return (
 			el( A, {
 				className: _status,
-				href: 'posts/' + this.props.post.get( 'id' )
+				href: 'posts/' + this.props.post.get( 'id' ) + '/' + window.location.search
 			},
 				el( 'div', { className: 'title' },
 					title
