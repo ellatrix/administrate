@@ -31,10 +31,18 @@ module.exports = React.createClass( {
 		if ( this.state.post.get( 'status' ) === 'draft' ) {
 			buttons = (
 				el( 'div', { className: 'content-buttons' },
-					el( 'button', { type: 'submit', className: 'button' },
+					el( 'button', {
+						className: 'button',
+						type: 'submit',
+						name: 'save'
+					},
 						l10n.__( 'Save Draft' )
 					),
-					el( 'button', { type: 'submit', className: 'button button-primary' },
+					el( 'button', {
+						className: 'button button-primary',
+						type: 'submit',
+						name: 'publish'
+					},
 						l10n.__( 'Publish' )
 					)
 				)
@@ -42,7 +50,11 @@ module.exports = React.createClass( {
 		} else {
 			buttons = (
 				el( 'div', { className: 'content-buttons' },
-					el( 'button', { type: 'submit', className: 'button button-primary' },
+					el( 'button', {
+						className: 'button button-primary',
+						type: 'submit',
+						name: 'save'
+					},
 						l10n.__( 'Update' )
 					)
 				)
@@ -81,9 +93,13 @@ module.exports = React.createClass( {
 								setup: function( editor ) {
 									editor.on( 'init', function() {
 										editor.on( 'keyup setcontent', function() {
-											PostsEditStore.get( PostEditStore.get( 'id' ) ).set( 'title', {
-												raw: editor.getContent()
-											} );
+											var id = PostEditStore.get( 'id' );
+
+											if ( id ) {
+												PostsEditStore.get( id ).set( 'title', {
+													raw: editor.getContent()
+												} );
+											}
 										} );
 									} );
 								}

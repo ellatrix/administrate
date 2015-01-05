@@ -32,6 +32,10 @@ module.exports = React.createClass( {
 		}
 
 		var items = this.state.posts.map( function( post ) {
+				if ( ! post.get( 'id' ) ) {
+					return null;
+				}
+
 				return (
 					el( ListItem, {
 						key: post.get( 'id' ),
