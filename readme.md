@@ -18,4 +18,4 @@ And run the build script:
 
 `grunt build`.
 
-If you're interesting in the development or want to edit files, run `grunt` to continuously compile the modules. It should also reload the page after any CSS/JS/PHP changes.
+If you're interested in the development or want to edit files, run `grunt` to continuously compile the modules. It should also reload the page after any CSS/JS/PHP changes.
