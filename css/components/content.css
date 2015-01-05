@@ -80,6 +80,12 @@
 	height: auto;
 }
 
+.title-field,
+.content-field {
+	margin: 0 auto;
+	max-width: 700px;
+}
+
 .mce-content-body.mce-placeholder {
 	opacity: 0.5;
 }
