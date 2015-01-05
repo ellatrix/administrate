@@ -15,11 +15,19 @@ module.exports = React.createClass( {
 		};
 	},
 	shouldComponentUpdate: function( nextProps ) {
+		var args;
+
 		if ( this.editor ) {
+			args = {
+				format: 'raw',
+				initial: true,
+				load: true,
+				element: this.editor.getElement()
+			};
+
 			this.editor.startContent = nextProps.content;
-			this.editor.setContent( nextProps.content, {
-				format: 'raw'
-			} );
+			this.editor.setContent( nextProps.content, args );
+			this.editor.fire( 'LoadContent', args );
 			this.editor.isNotDirty = true;
 			this.editor.selection.lastFocusBookmark = null;
 			this.editor.undoManager.clear();
@@ -37,6 +45,9 @@ module.exports = React.createClass( {
 		window.tinymce.init( _.extend( {}, this.props, {
 			target: self.props.target || this.refs.editor.getDOMNode(),
 			setup: function( editor ) {
+				var DOM = window.tinymce.DOM;
+				var hasPlaceholder;
+
 				self.editor = editor;
 
 				editor.editorManager.i18n.rtl = l10n.isRtl();
@@ -94,6 +105,51 @@ module.exports = React.createClass( {
 				// 		}
 				// 	} );
 				// }
+
+				function isEmpty() {
+					return editor.getContent( { format: 'raw' } ).replace( /(?:<p[^>]*>)?(?:<br[^>]*>)?(?:<\/p>)?/, '' ) === '';
+				}
+
+				if ( editor.settings.placeholder ) {
+					editor.on( 'blur LoadContent deactivate', function() {
+						if ( isEmpty() ) {
+							editor.setContent( editor.settings.placeholder, {
+								no_events: true
+							} );
+							hasPlaceholder = true;
+							DOM.addClass( editor.getBody(), 'mce-placeholder' );
+						}
+					} );
+
+					editor.on( 'focus activate', function() {
+						if ( hasPlaceholder ) {
+							editor.setContent( '', {
+								no_events: true
+							} );
+							hasPlaceholder = false;
+							DOM.removeClass( editor.getBody(), 'mce-placeholder' );
+						}
+					} );
+
+					editor.on( 'SetContent', function() {
+						if ( hasPlaceholder ) {
+							hasPlaceholder = false;
+							DOM.removeClass( editor.getBody(), 'mce-placeholder' );
+						}
+					} );
+
+					editor.on( 'PostProcess', function( event ) {
+						if ( hasPlaceholder && event.content ) {
+							event.content = '';
+						}
+					} );
+
+					editor.on( 'BeforeAddUndo', function( event ) {
+						if ( hasPlaceholder ) {
+							event.preventDefault();
+						}
+					} );
+				}
 
 				editor.once( 'init', loader.stop );
 

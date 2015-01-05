@@ -80,6 +80,33 @@
 	height: auto;
 }
 
+.mce-content-body.mce-placeholder {
+	opacity: 0.5;
+}
+
+/* @noflip */
+.content-field.mce-content-body.mce-placeholder span.flip {
+	-moz-transform: scale( -1, -1 );
+	-webkit-transform: scale( -1, -1 );
+	-o-transform: scale( -1, -1 );
+	-ms-transform: scale( -1, -1 );
+	transform: scale( -1, -1 );
+	display: inline-block;
+	font-size: 40px;
+	line-height: 40px;
+	pointer-events: none;
+	font-weight: bold;
+}
+
+/* @noflip */
+.rtl .content-field.mce-content-body.mce-placeholder span.flip {
+	-moz-transform: scale( 1, -1 );
+	-webkit-transform: scale( 1, -1 );
+	-o-transform: scale( 1, -1 );
+	-ms-transform: scale( 1, -1 );
+	transform: scale( 1, -1 );
+}
+
 .mce-edit-focus {
 	outline: none;
 }

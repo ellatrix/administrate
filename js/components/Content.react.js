@@ -89,6 +89,7 @@ module.exports = React.createClass( {
 								paste_as_text: true,
 								plugins: 'paste',
 								valid_elements: 'a',
+								placeholder: l10n.__( 'Title' ),
 								content: this.state.post.get( 'title' ) && this.state.post.get( 'title' ).raw || '',
 								setup: function( editor ) {
 									editor.on( 'init', function() {
@@ -110,6 +111,7 @@ module.exports = React.createClass( {
 							name: 'content',
 							unp: true,
 							fixed_toolbar_container: '.editor-toolbar',
+							placeholder: '<span class="flip">' + l10n.__( '&#10000;' ) + '</span>',
 							content: this.state.post.get( 'content' ) ? this.state.post.get( 'content' ).raw || '' : ''
 						} )
 					)
