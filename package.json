@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "grunt": "0.4.x",
+    "grunt-autoprefixer": "2.1.x",
     "grunt-browserify": "3.2.x",
     "grunt-contrib-compress": "0.12.x",
     "grunt-contrib-cssmin": "0.10.x",

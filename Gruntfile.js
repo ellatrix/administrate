@@ -3,6 +3,24 @@ module.exports = function( grunt ) {
 
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( 'package.json' ),
+		autoprefixer: {
+			options: {
+				browsers: [
+					'Android >= 2.3',
+					'Explorer >= 9',
+					'Firefox ESR',
+					'Opera >= 12.1',
+					'Safari >= 6'
+				],
+				cascade: false
+			},
+			all: {
+				src: [
+					'css/**/*.css',
+					'!css/bundle*'
+				]
+			}
+		},
 		browserify: {
 			dev: {
 				options: {
@@ -124,7 +142,8 @@ module.exports = function( grunt ) {
 	] );
 
 	grunt.registerTask( 'precommit', [
-		'jshint'
+		'jshint',
+		'autoprefixer'
 	] );
 
 	grunt.registerTask( 'build', [
