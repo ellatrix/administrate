@@ -130,7 +130,7 @@ moment.locale( 'user', {
 	],
 	relativeTime: {
 		future: l10n.__( 'in %s', 'administrate' ),
-		past: l10n.__( '%s ago', 'administrate' ),
+		past: l10n.__( '%s ago' ),
 		s: l10n._n( '%s min', '%s mins', 1 ).replace( '%s', '1' ),
 		m: l10n._n( '%s min', '%s mins', 1 ).replace( '%s', '1' ),
 		mm: l10n._n( '%s min', '%s mins', 2 ).replace( '%s', '%d' ),
