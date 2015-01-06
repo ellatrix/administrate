@@ -39,6 +39,10 @@ module.exports = {
 	decodeHTMLEntities: function( string ) {
 		var element;
 
+		if ( string.indexOf( '&' ) === -1 ) {
+			return string;
+		}
+
 		if ( this.cache[ string ] ) {
 			return this.cache[ string ];
 		}
