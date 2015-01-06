@@ -82,6 +82,8 @@ if ( ! class_exists( 'Administrate' ) ) {
 		}
 
 		function get_translation() {
+			load_textdomain( 'default', WP_LANG_DIR . '/admin-' . get_locale() . '.mo' );
+
 			return $GLOBALS['l10n'];
 		}
 
