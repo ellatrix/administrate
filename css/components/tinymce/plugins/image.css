@@ -1,0 +1,73 @@
+.editor .aligncenter,
+.editor dl.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.editor .wp-caption {
+	font-size: 14px;
+	text-align: center;
+	margin: 0;
+	max-width: 100% !important;
+}
+
+.editor .wp-caption img {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+	display: block;
+}
+
+.editor div.mceTemp {
+	-ms-user-select: element;
+}
+
+.editor dl.wp-caption,
+.editor dl.wp-caption * {
+	-webkit-user-drag: none;
+}
+
+.editor .wp-caption-dt {
+	padding: 5px;
+}
+
+.editor .wp-caption-dd {
+	padding: 0 5px 5px;
+	margin: 0;
+}
+
+.editor .alignleft {
+	float: left;
+	margin: 5px 15px 5px 0;
+}
+
+.editor .alignright {
+	float: right;
+	margin: 5px 0 5px 15px;
+}
+
+.editor .alignleft.wp-caption {
+	margin: 0 5px 0 0;
+}
+
+.editor .alignleft .wp-caption-dt,
+.editor .alignleft .wp-caption-dd {
+	padding-left: 0;
+	padding-right: 10px;
+}
+
+.editor .alignright.wp-caption {
+	margin: 0 0 0 5px;
+}
+
+.editor .alignright .wp-caption-dt,
+.editor .alignright .wp-caption-dd {
+	padding-left: 10px;
+	padding-right: 0;
+}
+
+/* autoprefixer: off */
+.editor img::selection {
+	background-color: transparent;
+}

@@ -6,12 +6,16 @@ var l10n = require( '../../utils/l10n' );
 var loader = require( '../../utils/loader' );
 
 require( './theme' );
+require( './plugins/image' );
 
 module.exports = React.createClass( {
 	getDefaultProps: function() {
 		return {
 			inline: true,
-			menubar: false
+			menubar: false,
+			plugins: [
+				'wpimage'
+			]
 		};
 	},
 	shouldComponentUpdate: function( nextProps ) {
@@ -19,7 +23,6 @@ module.exports = React.createClass( {
 
 		if ( this.editor ) {
 			args = {
-				format: 'raw',
 				initial: true,
 				load: true,
 				element: this.editor.getElement()
@@ -58,9 +61,7 @@ module.exports = React.createClass( {
 
 				if ( self.props.content ) {
 					editor.on( 'preinit', function() {
-						editor.setContent( self.props.content, {
-							format: 'raw'
-						} );
+						editor.setContent( self.props.content );
 					} );
 				}
 
