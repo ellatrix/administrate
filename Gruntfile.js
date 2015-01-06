@@ -66,6 +66,11 @@ module.exports = function( grunt ) {
 				NODE_ENV: 'production'
 			}
 		},
+		githooks: {
+			all: {
+				'pre-commit': 'precommit'
+			}
+		},
 		jshint: {
 			options: grunt.file.readJSON( '.jshintrc' ),
 			grunt: {
@@ -116,6 +121,10 @@ module.exports = function( grunt ) {
 		'env:dev',
 		'browserify:dev',
 		'watch'
+	] );
+
+	grunt.registerTask( 'precommit', [
+		'jshint'
 	] );
 
 	grunt.registerTask( 'build', [
