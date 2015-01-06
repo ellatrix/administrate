@@ -167,9 +167,9 @@ if ( ! class_exists( 'Administrate' ) ) {
 		<link rel="stylesheet" href="<?php echo admin_url( 'css/forms.css', 'relative' ); ?>" type="text/css" media="all">
 		<link rel="stylesheet" href="<?php echo $this->url( $this->gzip( 'css/' . ( $this->is_debugging() ? 'index' : 'bundle' ) . $this->rtl() . $this->min() . '.css' ), 'relative' ); ?>" type="text/css" media="all">
 		<div id="root">
-			<script type="text/javascript" src="https://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
-			<script type="text/javascript" src="<?php echo admin_url( 'js/editor.js', 'relative' ); ?>"></script>
-			<script type="text/javascript">
+			<script type="application/javascript" src="https://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+			<script type="application/javascript" src="<?php echo admin_url( 'js/editor.js', 'relative' ); ?>"></script>
+			<script type="application/javascript">
 				/* <![CDATA[ */
 				window._settings = <?php echo json_encode( array(
 					'API' => array(
@@ -185,8 +185,8 @@ if ( ! class_exists( 'Administrate' ) ) {
 				window._query = <?php echo ( $query = json_encode( $_GET ) ) === '[]' ? '{}' : $query; ?>;
 				/* ]]> */
 			</script>
-			<script type="text/javascript" src="<?php echo $this->url( $this->gzip( 'js/bundle' . ( $this->is_dev() ? '.dev' : $this->min() ) . '.js' ), 'relative' ); ?>"></script>
-			<?php if ( $this->is_dev() ) { ?><script type="text/javascript" src="//localhost:35729/livereload.js"></script><?php } ?>
+			<script type="application/javascript" src="<?php echo $this->url( $this->gzip( 'js/bundle' . ( $this->is_dev() ? '.dev' : $this->min() ) . '.js' ), 'relative' ); ?>"></script>
+			<?php if ( $this->is_dev() ) { ?><script type="application/javascript" src="//localhost:35729/livereload.js"></script><?php } ?>
 		</div>
 	</body>
 </html>
