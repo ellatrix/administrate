@@ -142,8 +142,7 @@ module.exports = function( grunt ) {
 	] );
 
 	grunt.registerTask( 'precommit', [
-		'jshint',
-		'autoprefixer'
+		'jshint'
 	] );
 
 	grunt.registerTask( 'build', [
@@ -152,6 +151,7 @@ module.exports = function( grunt ) {
 		'browserify:build',
 		'uglify:build',
 		'jsvalidate:build',
+		'autoprefixer',
 		'cssmin:build',
 		'cssjanus',
 		'compress'
