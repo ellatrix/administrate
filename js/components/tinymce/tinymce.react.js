@@ -6,7 +6,8 @@ var l10n = require( '../../utils/l10n' );
 var loader = require( '../../utils/loader' );
 
 require( './theme' );
-require( './plugins/image' );
+require( './plugins/image.tinymce' );
+require( './plugins/view.tinymce' );
 
 module.exports = React.createClass( {
 	getDefaultProps: function() {
@@ -14,7 +15,8 @@ module.exports = React.createClass( {
 			inline: true,
 			menubar: false,
 			plugins: [
-				'wpimage'
+				'wpimage',
+				'wpview'
 			]
 		};
 	},
