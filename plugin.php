@@ -177,7 +177,7 @@ if ( ! class_exists( 'Administrate' ) ) {
 						'root' => json_url( 'wp' ),
 						'nonce' => wp_create_nonce( 'wp_json' )
 					),
-					'root' => $this->administrate_url( '', 'relative' ),
+					'root' => $this->administrate_url(),
 					'adminURL' => admin_url( '', 'relative' )
 				) ); ?>;
 				window._l10n = <?php echo json_encode( (array) $GLOBALS['l10n'] ); ?>;
@@ -197,7 +197,7 @@ if ( ! class_exists( 'Administrate' ) ) {
 		}
 
 		function admin_menu() {
-			$GLOBALS['menu'][1000] = array( 'Administrate', 'read', $this->administrate_url( '/', 'relative' ), '', 'menu-top', '', 'dashicons-randomize' );
+			$GLOBALS['menu'][1000] = array( 'Administrate', 'read', $this->administrate_url( '/' ), '', 'menu-top', '', 'dashicons-randomize' );
 		}
 
 		function url( $path, $scheme = null ) {
