@@ -1,6 +1,6 @@
 === Administrate ===
 
-Contributors: avryl
+Contributors: iseulde
 Requires at least: 4.1
 Tags: admin
 Tested up to: 4.1

@@ -6,7 +6,7 @@ This repo only contains the development files.
 
 To install it, clone it into your `plugins` folder:
 
-`git clone --recursive https://github.com/avryl/administrate`.
+`git clone --recursive https://github.com/iseulde/administrate`.
 
 If you already cloned, but not recusively, run `git submodule init` and `git submodule update`.
 

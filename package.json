@@ -2,7 +2,7 @@
   "name": "administrate",
   "version": "0.1.0",
   "description": "An alternative JavaScript powered WordPress admin.",
-  "repository": "https://github.com/avryl/administrate",
+  "repository": "https://github.com/iseulde/administrate",
   "dependencies": {
     "backbone": "1.1.x",
     "jquery": "2.1.x",
@@ -28,5 +28,5 @@
     "matchdep": "0.3.x",
     "systemjs": "^0.15.0"
   },
-  "author": "Janneke Van Dorpe"
+  "author": "Ella Iseulde Van Dorpe"
 }

@@ -2,10 +2,10 @@
 
 /**
  * Plugin Name: Administrate
- * Plugin URI: https://github.com/avryl/administrate
+ * Plugin URI: https://github.com/iseulde/administrate
  * Description: An alternative JavaScript powered WordPress admin.
- * Author: Janneke Van Dorpe
- * Author URI: http://jannekevandorpe.com
+ * Author: Ella Iseulde Van Dorpe
+ * Author URI: http://iseulde.com
  * Version: 0.1
  * Text Domain: administrate
  * Domain Path: /languages/
