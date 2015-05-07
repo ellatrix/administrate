@@ -1,6 +1,6 @@
-var _ = require( 'underscore' );
+import _ from 'underscore';
 
-module.exports = function( ClassNames ) {
+export default function( ClassNames ) {
 	if ( _.isArray( ClassNames ) ) {
 		return _.compact( ClassNames ).join( ' ' ) || null;
 	}

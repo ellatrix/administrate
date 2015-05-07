@@ -13,7 +13,8 @@ var scrollable = {
 	render: function() {
 		return (
 			el( 'div', {
-				className: this.props.className
+				className: this.props.className,
+				'data-columns': this.props['data-columns']
 			},
 				el( 'div', {
 					className: cx( {

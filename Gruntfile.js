@@ -22,6 +22,9 @@ module.exports = function( grunt ) {
 			}
 		},
 		browserify: {
+			options: {
+				transform: [ 'babelify' ]
+			},
 			dev: {
 				options: {
 					browserifyOptions: {
@@ -110,9 +113,9 @@ module.exports = function( grunt ) {
 			}
 		},
 		uglify: {
-			// options: {
-			// 	sourceMap: true
-			// },
+			options: {
+				sourceMap: true
+			},
 			build: {
 				files: {
 					'js/bundle.min.js': [ 'js/bundle.js' ]
@@ -131,6 +134,24 @@ module.exports = function( grunt ) {
 			},
 			php: {
 				files: [ 'plugin.php', 'WP-API/**/*.php' ]
+			}
+		},
+		babel: {
+			options: {
+				sourceMap: true,
+				moduleIds: true,
+				moduleRoot: '',
+				sourceRoot: 'src/js',
+				modules: 'system'
+			},
+			dist: {
+				expand: true,
+				cwd: 'src',
+				dest: 'build',
+				src: [
+					'js/**/**.js',
+					'!src/js/_external.js'
+				]
 			}
 		}
 	} );

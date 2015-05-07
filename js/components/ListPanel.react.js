@@ -4,7 +4,7 @@ var RouterStore = require( '../stores/RouterStore' );
 
 module.exports = React.createClass( {
 	render: function() {
-		if ( RouterStore.get( 'route' ) !== 'posts' && RouterStore.get( 'route' ) !== 'pages' ) {
+		if ( RouterStore.get( 'route' ) !== 'posts' ) {
 			return null;
 		}
 
@@ -17,12 +17,9 @@ module.exports = React.createClass( {
 		return (
 			el( 'div', { className: 'list' },
 				el( 'div', { className: 'list-options' },
-					el( 'input', { type: 'text' } )
+					el( 'div', { className: 'dashicons dashicons-search' } )
 				),
-				el( require( './List.react' ) ),
-				el( 'div', { className: 'list-options' },
-					'Next page'
-				)
+				el( require( './List.react' ) )
 			)
 		);
 	}

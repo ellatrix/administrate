@@ -26,10 +26,18 @@ module.exports = React.createClass( {
 		RouterStore.off( 'change', this._onChange );
 	},
 	render: function() {
+		var self = this;
+
 		return (
 			el( 'a', {
 				href: addTrailingSlash( window._settings.root + this.props.href ),
-				onClick: this._onClick,
+				onClick: function( event ) {
+					self._onClick( event );
+
+					if ( self.props.onClick ) {
+						self.props.onClick( event );
+					}
+				},
 				className: cx( [
 					this.props.className,
 					cx( {

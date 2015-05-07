@@ -3,6 +3,7 @@ var el = React.createElement;
 var Scrollable = require( './Scrollable.react' );
 var ListItem = require( './ListItem.react' );
 var PostsEditStore = require( '../stores/PostsEditStore' );
+var PostEditStore = require( '../stores/PostEditStore' );
 
 module.exports = React.createClass( {
 	getInitialState: function() {
@@ -31,22 +32,27 @@ module.exports = React.createClass( {
 			return null;
 		}
 
-		var items = this.state.posts.map( function( post ) {
-				if ( ! post.get( 'id' ) ) {
-					return null;
-				}
+		var items = [];
 
-				return (
-					el( ListItem, {
-						key: post.get( 'id' ),
-						post: post
-					} )
+		this.state.posts.each( function( post ) {
+			items.push(
+				el( ListItem, {
+					key: post.id,
+					post: post
+				} )
+			);
+
+			if ( post.id === PostEditStore.id ) {
+				items.push(
+					el( 'div', {
+						key: 'context',
+						className: 'post-meta'
+					},
+						el( 'div', { className: 'dashicons dashicons-arrow-down' } )
+					)
 				);
-			}, this );
-
-		if ( ! items.length ) {
-			return null;
-		}
+			}
+		} );
 
 		return (
 			el( Scrollable, { className: 'the-list' },

@@ -15,7 +15,8 @@ var Router = Backbone.Router.extend( {
 		'plugins/': 'plugins',
 		'users/': 'users',
 		'tools/': 'tools',
-		'settings/': 'settings'
+		'settings/*path': 'settings',
+		'help/*path': 'help'
 	},
 	navigate: function( fragment ) {
 		var options = Backbone.history.options,

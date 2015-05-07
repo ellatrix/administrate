@@ -7,23 +7,27 @@
     "backbone": "1.1.x",
     "jquery": "2.1.x",
     "moment": "2.8.x",
-    "react": "0.12.x",
+    "react": "0.13.x",
     "underscore": "1.7.x"
   },
   "devDependencies": {
+    "babelify": "6.0.x",
     "grunt": "0.4.x",
     "grunt-autoprefixer": "2.1.x",
+    "grunt-babel": "^4.0.0",
     "grunt-browserify": "3.2.x",
     "grunt-contrib-compress": "0.12.x",
+    "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-cssmin": "0.10.x",
     "grunt-contrib-jshint": "0.10.x",
-    "grunt-contrib-uglify": "0.6.x",
+    "grunt-contrib-uglify": "0.8.x",
     "grunt-contrib-watch": "0.6.x",
     "grunt-cssjanus": "git://github.com/ocean90/grunt-cssjanus.git#97c43554ff7a86e2ff414d34e66725b05118bf10",
     "grunt-env": "0.4.x",
     "grunt-githooks": "0.3.x",
     "grunt-jsvalidate": "0.2.x",
-    "matchdep": "0.3.x"
+    "matchdep": "0.3.x",
+    "systemjs": "^0.15.0"
   },
   "author": "Janneke Van Dorpe"
 }

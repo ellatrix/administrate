@@ -3,8 +3,16 @@ var el = React.createElement;
 var A = require( './Link.react' );
 var l10n = require( '../utils/l10n' );
 var moment = require( 'moment' );
+var cx = require( '../utils/cx' );
+var PostEditStore = require( '../stores/PostEditStore' );
 
 module.exports = React.createClass( {
+	getInitialState: function() {
+		return {
+			open: false,
+			active: false
+		};
+	},
 	render: function() {
 		var title, status, _status, _moment, date;
 
@@ -42,10 +50,13 @@ module.exports = React.createClass( {
 			);
 		}
 
+		console.log(title);
+
 		return (
 			el( A, {
-				className: _status,
-				href: 'posts/' + this.props.post.get( 'id' ) + '/' + window.location.search
+				className: cx( [ _status, cx( { 'open': this.state.open } ) ] ),
+				href: 'posts/' + this.props.post.get( 'id' ) + '/' + window.location.search,
+				onClick: this._onClick
 			},
 				el( 'div', { className: 'title' },
 					title
@@ -56,5 +67,10 @@ module.exports = React.createClass( {
 				)
 			)
 		);
+	},
+	_onClick: function() {
+		if ( this.props.post.id === PostEditStore.id ) {
+			this.setState( { open: ! this.state.open } );
+		}
 	}
 } );

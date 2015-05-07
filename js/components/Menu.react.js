@@ -1,7 +1,6 @@
 var React = require( 'react' );
 var el = React.createElement;
 var MenuItem = require( './MenuItem.react' );
-var AdminURL = require( './AdminURL.react' );
 var l10n = require( '../utils/l10n' );
 
 module.exports = React.createClass( {
@@ -43,13 +42,7 @@ module.exports = React.createClass( {
 				} ),
 				el( MenuItem, {
 					text: 'Settings'
-				} ),
-				el( 'li', { className: 'separator' } ),
-				el( 'li', null,
-					el( AdminURL, { className: 'dashicons-before dashicons-randomize' },
-						l10n.__( 'Old Admin', 'administrate' )
-					)
-				)
+				} )
 			)
 		);
 	}

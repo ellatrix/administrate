@@ -1,10 +1,9 @@
-var $ = require(  'jquery');
 var count = 1;
 
 module.exports = {
 	start: function() {
 		if ( ! count ) {
-			$( document.body ).addClass( 'progress' );
+			document.body.className = document.body.className + ' progress';
 		}
 
 		count++;
@@ -15,7 +14,7 @@ module.exports = {
 		}
 
 		if ( ! count ) {
-			$( document.body ).removeClass( 'progress' );
+			document.body.className = document.body.className.replace( ' progress', '' );
 		}
 	}
 };

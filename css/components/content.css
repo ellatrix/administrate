@@ -1,9 +1,9 @@
 .content {
 	position: absolute;
-	top: 32px;
+	top: 0;
 	right: 0;
 	bottom: 0;
-	left: 480px;
+	left: 301px;
 	-webkit-transition: all 0.2s;
 	transition: all 0.2s;
 }
@@ -14,7 +14,9 @@
 	right: 0;
 	left: 0;
 	height: 28px;
-	padding: 10px 10px 5px 5px;
+	padding: 5px;
+	background: #f5f5f5;
+	border-bottom: 1px solid #e2e2e2;
 }
 
 .content-navigation .dashicons-admin-collapse {
@@ -44,17 +46,17 @@
 
 .content-section {
 	position: absolute;
-	top: 47px;
-	right: 10px;
-	bottom: 10px;
-	left: 5px;
+	top: 39px;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	background-color: #fff;
-	border: 1px solid #e5e5e5;
+	/*border: 1px solid #e5e5e5;*/
 }
 
 .editor-area {
 	position: absolute;
-	top: 37px;
+	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
@@ -86,6 +88,14 @@
 	max-width: 700px;
 }
 
+@media screen and ( max-width: 1041px ) {
+	.title-field,
+	.content-field {
+		left: auto;
+		margin-left: 0;
+	}
+}
+
 .mce-content-body.mce-placeholder {
 	opacity: 0.5;
 }
@@ -111,4 +121,8 @@
 
 .mce-edit-focus {
 	outline: none;
+}
+
+.editor-toolbar {
+	display: none;
 }

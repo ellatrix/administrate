@@ -1,34 +1,41 @@
-var React = require( 'react' );
-var el = React.createElement;
-var RouterStore = require( '../stores/RouterStore' );
-var loader = require( '../utils/loader' );
+import React from 'react';
+import Bar from './Bar.react';
+import Menu from './Menu.react';
+import Body from './Body.react';
+import RouterStore from '../stores/RouterStore';
+import loader from '../utils/loader';
 
-module.exports = React.createClass( {
-	getInitialState: function() {
+export default React.createClass( {
+
+	getInitialState() {
 		return {
 			route: RouterStore.get( 'route' )
 		};
 	},
-	componentDidMount: function() {
+
+	componentDidMount() {
 		loader.stop();
 		RouterStore.on( 'change', this._onChange );
 	},
-	componentWillUnmount: function() {
+
+	componentWillUnmount() {
 		RouterStore.off( 'change', this._onChange );
 	},
-	render: function() {
+
+	render() {
 		return (
-			el( 'div', null,
-				el( require( './Bar.react' ) ),
-				el( require( './Menu.react' ) ),
-				el( require( './ListPanel.react' ) ),
-				el( require( './Content.react' ) )
-			)
+			<div>
+				<Bar />
+				<Menu />
+				<Body />
+			</div>
 		);
 	},
-	_onChange: function() {
+
+	_onChange() {
 		this.setState( {
 			route: RouterStore.get( 'route' )
 		} );
 	}
+
 } );

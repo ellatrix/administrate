@@ -51,7 +51,6 @@ if ( ! class_exists( 'Administrate' ) ) {
 			add_action( 'wp_json_server_before_serve', array( $this, 'wp_json_server_before_serve' ) );
 			add_action( 'parse_request', array( $this, 'parse_request' ), 0 );
 			add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-			add_action( 'registered_post_type', array( $this, 'registered_post_type' ), 10, 2 );
 		}
 
 		function min_wp_version_notice() {
@@ -198,138 +197,7 @@ if ( ! class_exists( 'Administrate' ) ) {
 		}
 
 		function admin_menu() {
-			$pagenow = $GLOBALS['pagenow'];
-			$path = array();
-
-			if ( preg_match( '/^options-(.*?)\.php$/', $pagenow, $matches ) ) {
-				$path = array( 'settings', $matches[1] );
-			}
-
-			if ( empty( $path[0] ) ) {
-				switch ( $pagenow ) {
-					case 'edit.php':
-					case 'post.php':
-					case 'post-new.php':
-						if ( isset( $_GET['post'] ) ) {
-							$post_type = get_post_type( $_GET['post'] );
-						} else if ( isset( $_GET['post_type'] ) ) {
-							$post_type = $_GET['post_type'];
-						} else {
-							$post_type = 'post';
-						}
-
-						if ( $post_type ) {
-							$post_type_object = get_post_type_object( $post_type );
-
-							if ( $post_type_object ) {
-								$path[0] = $post_type_object->multiple_name;
-							}
-						}
-
-						break;
-					case 'upload.php':
-					case 'media-new.php':
-						$path[0] = 'media';
-						break;
-					case 'edit-comments.php':
-					case 'comment.php':
-						$path[0] = 'comments';
-						break;
-					case 'themes.php':
-					case 'theme-editor.php':
-					case 'widgets.php':
-						$path[0] = 'appearance';
-						break;
-					case 'plugins.php':
-					case 'plugin-install.php':
-					case 'plugin-editor.php':
-						$path[0] = 'plugins';
-						break;
-					case 'users.php':
-					case 'user-new.php':
-					case 'user-edit.php':
-					case 'profile.php':
-						$path[0] = 'users';
-						break;
-					case 'tools.php':
-					case 'import.php':
-					case 'export.php':
-						$path[0] = 'tools';
-						break;
-					case 'update-core.php':
-						$path[0] = 'updates';
-						break;
-				}
-			}
-
-			if ( ! empty( $path[0] ) && empty( $path[1] ) ) {
-				switch ( $pagenow ) {
-					case 'post.php':
-						if ( ! empty( $_GET['post'] ) ) {
-							$path[1] = $_GET['post'];
-						}
-
-						break;
-					case 'comment.php':
-						if ( ! empty( $_GET['c'] ) ) {
-							$path[1] = $_GET['c'];
-						}
-
-						break;
-					case 'user-edit.php':
-						if ( ! empty( $_GET['user_id'] ) ) {
-							$path[1] = $_GET['user_id'];
-						}
-
-						break;
-					case 'profile.php':
-						$path[1] = 'me';
-						break;
-					case 'import.php':
-						$path[1] = 'import';
-						break;
-					case 'export.php':
-						$path[1] = 'export';
-						break;
-				}
-			}
-
-			$path = join( '/', $path );
-
-			if ( ! empty( $path ) ) {
-				$path .= '/';
-			}
-
-			$GLOBALS['menu'][1000] = array(
-				__( 'Administrate' ),
-				'read',
-				$this->administrate_url( $path, 'relative' ),
-				'',
-				'menu-top',
-				'',
-				'dashicons-randomize'
-			);
-		}
-
-		function registered_post_type( $post_type, $args ) {
-			if ( ! isset( $args->multiple_name ) ) {
-				switch ( $args->name ) {
-					case 'post':
-						$args->multiple_name = 'posts';
-						break;
-					case 'page':
-						$args->multiple_name = 'pages';
-						break;
-					case 'attachment':
-						$args->multiple_name = 'media';
-						break;
-					default:
-						$args->multiple_name = $args->name;
-						break;
-				}
-			}
-
-			$GLOBALS['wp_post_types'][ $post_type ] = $args;
+			$GLOBALS['menu'][1000] = array( 'Administrate', 'read', $this->administrate_url( '/', 'relative' ), '', 'menu-top', '', 'dashicons-randomize' );
 		}
 
 		function url( $path, $scheme = null ) {

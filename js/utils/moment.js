@@ -1,5 +1,5 @@
-var l10n = require( './l10n' );
-var moment = require( 'moment' );
+import moment from 'moment';
+import l10n from './l10n';
 
 var meridiem = {
 	am: l10n.__( 'am' ),

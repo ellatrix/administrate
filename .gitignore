@@ -1,3 +1,5 @@
+.DS_Store
+
 css/bundle*
 js/bundle*
 node_modules
