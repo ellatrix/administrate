@@ -14,7 +14,7 @@ module.exports = React.createClass( {
 		if ( model.get( 'media_type' ) === 'image' ) {
 			image = el( 'img', {
 				src: model.get( 'source_url' ),
-				className: details['height'] > details['width'] ? 'portrait' : 'landscape'
+				className: details.height > details.width ? 'portrait' : 'landscape'
 			} );
 		} else {
 			image = el( 'img', {
@@ -25,7 +25,7 @@ module.exports = React.createClass( {
 		return (
 			el( 'li', {
 				className: cx( {
-					'wp-media-tile': true,
+					'wp-media-tile': true
 					// 'wp-media-tile-selected': selection.get( model )
 				} ),
 				onClick: this.onClick
@@ -41,7 +41,7 @@ module.exports = React.createClass( {
 		);
 	},
 	onClick: function() {
-		var self = this;
+		// var self = this;
 
 		// if ( selection.get( this.props.model ) ) {
 		// 	selection.remove( this.props.model );

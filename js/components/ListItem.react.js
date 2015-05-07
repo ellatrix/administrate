@@ -50,8 +50,6 @@ module.exports = React.createClass( {
 			);
 		}
 
-		console.log(title);
-
 		return (
 			el( A, {
 				className: cx( [ _status, cx( { 'open': this.state.open } ) ] ),

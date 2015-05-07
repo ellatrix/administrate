@@ -5,6 +5,8 @@ import Body from './Body.react';
 import RouterStore from '../stores/RouterStore';
 import loader from '../utils/loader';
 
+var el = React.createElement;
+
 export default React.createClass( {
 
 	getInitialState() {
@@ -24,11 +26,11 @@ export default React.createClass( {
 
 	render() {
 		return (
-			<div>
-				<Bar />
-				<Menu />
-				<Body />
-			</div>
+			el( 'div', {},
+				el( Bar ),
+				el( Menu ),
+				el( Body )
+			)
 		);
 	},
 

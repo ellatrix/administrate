@@ -1,7 +1,6 @@
 var React = require( 'react' );
 var el = React.createElement;
 var MenuItem = require( './MenuItem.react' );
-var l10n = require( '../utils/l10n' );
 
 module.exports = React.createClass( {
 	render: function() {

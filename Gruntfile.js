@@ -103,7 +103,8 @@ module.exports = function( grunt ) {
 			cjs: {
 				src: [ 'js/**/*js', '!js/*.js', '!js/components/tinymce/theme.js' ],
 				options: {
-					browserify: true
+					browserify: true,
+					esnext: true
 				}
 			}
 		},

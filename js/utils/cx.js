@@ -8,4 +8,4 @@ export default function( ClassNames ) {
 	return _.filter( _.keys( ClassNames ), function( ClassName ) {
 		return ClassNames[ ClassName ];
 	} ).join( ' ' ) || null;
-};
+}

@@ -1,6 +1,5 @@
 var React = require( 'react' );
 var el = React.createElement;
-var Scrollable = require( './Scrollable.react' );
 var MediaItem = require( './MediaItem.react' );
 var MediaLibrary = require( '../stores/MediaLibrary' );
 
@@ -30,8 +29,6 @@ module.exports = React.createClass( {
 		if ( ! this.state.posts.length ) {
 			return null;
 		}
-
-		console.log(this.state.posts);
 
 		var items = this.state.posts.map( function( post ) {
 				if ( ! post.get( 'id' ) ) {
