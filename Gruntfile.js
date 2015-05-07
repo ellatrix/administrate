@@ -62,16 +62,6 @@ module.exports = function( grunt ) {
 				} ]
 			}
 		},
-		cssjanus: {
-			options: {
-				swapLtrRtlInUrl: false
-			},
-			build: {
-				files: {
-					'css/bundle-rtl.min.css': [ 'css/bundle.min.css' ]
-				}
-			}
-		},
 		cssmin: {
 			build: {
 				files: {
