@@ -174,8 +174,8 @@ if ( ! class_exists( 'Administrate' ) ) {
 				/* <![CDATA[ */
 				window._settings = <?php echo json_encode( array(
 					'API' => array(
-						'root' => json_url( 'wp' ),
-						'nonce' => wp_create_nonce( 'wp_json' )
+						'root' => rest_url( 'wp/v2' ),
+						'nonce' => wp_create_nonce( 'wp_rest' )
 					),
 					'root' => $this->administrate_url(),
 					'adminURL' => admin_url( '', 'relative' )
