@@ -8,7 +8,8 @@
     "jquery": "2.1.x",
     "moment": "2.8.x",
     "react": "0.13.x",
-    "underscore": "1.7.x"
+    "underscore": "1.7.x",
+    "flux": "2.0.x"
   },
   "devDependencies": {
     "babelify": "6.0.x",
