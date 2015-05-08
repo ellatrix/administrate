@@ -1,7 +1,7 @@
 var React = require( 'react' );
 var el = React.createElement;
 var A = require( './Link.react' );
-var l10n = require( '../utils/l10n' );
+import { __ } from '../utils/l10n';
 var moment = require( 'moment' );
 var cx = require( '../utils/cx' );
 var PostEditStore = require( '../stores/PostEditStore' );
@@ -20,7 +20,7 @@ module.exports = React.createClass( {
 			return null;
 		}
 
-		title = this.props.post.get( 'title' ).raw || l10n.__( '(no title)' );
+		title = this.props.post.get( 'title' ).raw || __( '(no title)' );
 		_status = this.props.post.get( 'status' );
 		_moment = moment( this.props.post.get( 'date' ) );
 

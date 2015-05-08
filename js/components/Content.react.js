@@ -6,7 +6,7 @@ var TinyMCE = require( './tinymce/tinymce.react' );
 var PostEditStore = require( '../stores/PostEditStore' );
 var PostsEditStore = require( '../stores/PostsEditStore' );
 var RouterStore = require( '../stores/RouterStore' );
-var l10n = require( '../utils/l10n' );
+import { __ } from '../utils/l10n';
 var _ = require( 'underscore' );
 
 module.exports = React.createClass( {
@@ -36,14 +36,14 @@ module.exports = React.createClass( {
 						type: 'submit',
 						name: 'save'
 					},
-						l10n.__( 'Save Draft' )
+						__( 'Save Draft' )
 					),
 					el( 'button', {
 						className: 'button button-primary',
 						type: 'submit',
 						name: 'publish'
 					},
-						l10n.__( 'Publish' )
+						__( 'Publish' )
 					)
 				)
 			);
@@ -55,7 +55,7 @@ module.exports = React.createClass( {
 						type: 'submit',
 						name: 'save'
 					},
-						l10n.__( 'Update' )
+						__( 'Update' )
 					)
 				)
 			);
@@ -89,7 +89,7 @@ module.exports = React.createClass( {
 								paste_as_text: true,
 								plugins: 'paste',
 								valid_elements: 'a',
-								placeholder: l10n.__( 'Title' ),
+								placeholder: __( 'Title' ),
 								content: this.state.post.get( 'title' ) && this.state.post.get( 'title' ).raw || '',
 								setup: function( editor ) {
 									editor.on( 'init', function() {
@@ -111,7 +111,7 @@ module.exports = React.createClass( {
 							name: 'content',
 							unp: true,
 							fixed_toolbar_container: '.editor-toolbar',
-							placeholder: '<span class="flip">' + l10n.__( '&#10000;' ) + '</span>',
+							placeholder: '<span class="flip">' + __( '&#10000;' ) + '</span>',
 							content: this.state.post.get( 'content' ) ? this.state.post.get( 'content' ).raw || '' : ''
 						} )
 					)

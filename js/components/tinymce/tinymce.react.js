@@ -2,7 +2,7 @@ var React = require( 'react' );
 var el = React.createElement;
 var _ = require( 'underscore' );
 var cx = require( '../../utils/cx' );
-var l10n = require( '../../utils/l10n' );
+import { __, isRtl } from '../../utils/l10n';
 var loader = require( '../../utils/loader' );
 
 require( './theme' );
@@ -55,10 +55,10 @@ module.exports = React.createClass( {
 
 				self.editor = editor;
 
-				editor.editorManager.i18n.rtl = l10n.isRtl();
+				editor.editorManager.i18n.rtl = isRtl();
 
 				editor.editorManager.i18n.translate = function( text ) {
-					return l10n.__( text );
+					return __( text );
 				};
 
 				if ( self.props.content ) {
