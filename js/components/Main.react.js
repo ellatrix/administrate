@@ -1,6 +1,5 @@
 import React from 'react';
 import Bar from './Bar.react';
-import Menu from './Menu.react';
 import Body from './Body.react';
 import RouterStore from '../stores/RouterStore';
 import loader from '../utils/loader';
@@ -31,7 +30,6 @@ export default React.createClass( {
 		return (
 			el( 'div', {},
 				el( Bar ),
-				el( Menu ),
 				el( Body )
 			)
 		);

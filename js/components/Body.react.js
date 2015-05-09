@@ -21,12 +21,6 @@ module.exports = React.createClass( {
 					el( require( './Media.react' ) )
 				)
 			);
-		} else if ( this.state.route === 'settings' ) {
-			return (
-				el( 'div', { className: 'body' },
-					el( require( './settings/ListPanel' ) )
-				)
-			);
 		} else {
 			return (
 				el( 'div', { className: 'body' },
