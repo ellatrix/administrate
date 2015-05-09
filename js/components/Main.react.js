@@ -7,6 +7,9 @@ import loader from '../utils/loader';
 
 var el = React.createElement;
 
+/**
+ * The main application React component.
+ */
 export default React.createClass( {
 
 	getInitialState() {

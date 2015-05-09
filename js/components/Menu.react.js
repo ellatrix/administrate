@@ -2,6 +2,9 @@ var React = require( 'react' );
 var el = React.createElement;
 var MenuItem = require( './MenuItem.react' );
 
+/**
+ * A menu component that we're not using at the moment.
+ */
 module.exports = React.createClass( {
 	render: function() {
 		return (

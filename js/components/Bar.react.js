@@ -3,6 +3,9 @@ import A from './Link.react';
 
 var el = React.createElement;
 
+/**
+ * Admin bar component.
+ */
 export default React.createClass( {
 
 	render() {
