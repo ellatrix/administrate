@@ -1,6 +1,10 @@
 var Backbone = require( '../utils/backbone' );
 var RouterStore = require( '../stores/RouterStore' );
 
+/**
+ * A Backbone router which listens to browser history,
+ * forwarding routing events to a "RouterStore"
+ */
 var Router = Backbone.Router.extend( {
 	routes: {
 		'(/)': 'dashboard',
@@ -43,6 +47,9 @@ var Router = Backbone.Router.extend( {
 
 var router = new Router();
 
+/**
+ * Whenever a route event happens, pass it through to the RouterStore.
+ */
 router.on( 'route', function( route, args ) {
 	RouterStore.set( {
 		route: route,

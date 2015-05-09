@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Administrate
  * Plugin URI: https://github.com/iseulde/administrate
@@ -13,6 +12,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
+// Confirm WP has been loaded and this file isn't being loaded directly.
 if ( ! function_exists( 'add_action' ) ) {
 	return;
 }
