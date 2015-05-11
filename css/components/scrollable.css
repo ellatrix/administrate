@@ -7,7 +7,7 @@
 	left: 0;
 }
 
-/*.scrollable.top-shadow ~ .top-shadow,
+.scrollable.top-shadow ~ .top-shadow,
 .scrollable.bottom-shadow ~ .bottom-shadow {
 	height: 6px;
 	pointer-events: none;
@@ -36,4 +36,4 @@
 		inset 0 -2px 0 rgba( 0, 0, 0, 0.02 ),
 		inset 0 -4px 0 rgba( 0, 0, 0, 0.02 ),
 		inset 0 -6px 0 rgba( 0, 0, 0, 0.02 );
-}*/
+}

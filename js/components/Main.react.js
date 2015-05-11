@@ -1,37 +1,36 @@
-import React from 'react';
+import { Component, createElement as el } from 'react';
 import Bar from './Bar.react';
 import Body from './Body.react';
 import RouterStore from '../stores/RouterStore';
 
-var el = React.createElement;
+export default class extends Component {
 
-/**
- * The main application React component.
- */
-export default React.createClass( {
+	constructor( props ) {
+		super( props );
 
-	getInitialState() {
-		return {
+		this.state = {
 			route: RouterStore.get( 'route' )
 		};
-	},
+
+		this._onChange = this._onChange.bind( this );
+	}
 
 	componentDidMount() {
 		RouterStore.on( 'change', this._onChange );
-	},
+	}
 
 	componentWillUnmount() {
 		RouterStore.off( 'change', this._onChange );
-	},
+	}
 
 	render() {
 		return (
-			el( 'div', {},
+			el( 'div', null,
 				el( Bar ),
 				el( Body )
 			)
 		);
-	},
+	}
 
 	_onChange() {
 		this.setState( {
@@ -39,4 +38,4 @@ export default React.createClass( {
 		} );
 	}
 
-} );
+}
