@@ -1,13 +1,10 @@
 import { render, createElement as el } from 'react';
 import $ from 'jquery';
-import loader from './utils/loader';
 import Main from './components/Main.react';
 import observer from './utils/observer';
 
 // Localise Moment.js.
 require( './utils/moment' );
-
-$( document ).ajaxSend( loader.start ).ajaxComplete( loader.stop );
 
 // observer.observe( document, {
 // 	attributes: true,

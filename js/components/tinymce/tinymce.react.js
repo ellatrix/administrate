@@ -3,7 +3,6 @@ var el = React.createElement;
 var _ = require( 'underscore' );
 var cx = require( '../../utils/cx' );
 import { __, isRtl } from '../../utils/l10n';
-var loader = require( '../../utils/loader' );
 
 require( './theme' );
 require( './plugins/image.tinymce' );
@@ -44,8 +43,6 @@ module.exports = React.createClass( {
 	},
 	componentDidMount: function() {
 		var self = this;
-
-		loader.start();
 
 		window.tinymce.init( _.extend( {}, this.props, {
 			target: self.props.target || this.refs.editor.getDOMNode(),
@@ -153,8 +150,6 @@ module.exports = React.createClass( {
 						}
 					} );
 				}
-
-				editor.once( 'init', loader.stop );
 
 				if ( self.props.setup ) {
 					self.props.setup( editor );

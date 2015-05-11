@@ -2,7 +2,6 @@ import React from 'react';
 import Bar from './Bar.react';
 import Body from './Body.react';
 import RouterStore from '../stores/RouterStore';
-import loader from '../utils/loader';
 
 var el = React.createElement;
 
@@ -18,7 +17,6 @@ export default React.createClass( {
 	},
 
 	componentDidMount() {
-		loader.stop();
 		RouterStore.on( 'change', this._onChange );
 	},
 
