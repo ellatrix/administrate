@@ -1,18 +1,21 @@
-import { default as React, createElement as el } from 'react';
+import { Component, createElement as el } from 'react';
 import A from './Link.react';
 import { __ } from '../utils/l10n';
 import moment from 'moment';
 import cx from '../utils/cx';
 import PostEditStore from '../stores/PostEditStore';
 
-module.exports = React.createClass( {
-	getInitialState: function() {
-		return {
-			open: false,
-			active: false
+export default class PostCard extends Component {
+
+	constructor( props ) {
+		super( props );
+
+		this.state = {
+			open: false
 		};
-	},
-	render: function() {
+	}
+
+	render() {
 		var title, status, _status, _moment, date;
 
 		if ( ! this.props.post.get( 'title' ) ) {
@@ -64,10 +67,11 @@ module.exports = React.createClass( {
 				)
 			)
 		);
-	},
-	_onClick: function() {
+	}
+
+	_onClick() {
 		if ( this.props.post.id === PostEditStore.id ) {
 			this.setState( { open: ! this.state.open } );
 		}
 	}
-} );
+}
