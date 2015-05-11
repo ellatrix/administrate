@@ -113,11 +113,11 @@ ul.the-list {
 	color: #666;
 }
 
-.the-list a.sheduled .status {
+.the-list a.future .status {
 	background-color: #2ea2cc;
 }
 
-.the-list a.sheduled .date {
+.the-list a.future .date {
 	color: #2ea2cc;
 }
 

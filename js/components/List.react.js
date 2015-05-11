@@ -1,17 +1,21 @@
-var React = require( 'react' );
-var el = React.createElement;
-var Scrollable = require( './Scrollable.react' );
-var ListItem = require( './ListItem.react' );
-var PostsEditStore = require( '../stores/PostsEditStore' );
-var PostEditStore = require( '../stores/PostEditStore' );
+import { Component, createElement as el } from 'react';
+import Scrollable from './Scrollable.react';
+import ListItem from './ListItem.react';
+import PostsEditStore from '../stores/PostsEditStore';
 
-module.exports = React.createClass( {
-	getInitialState: function() {
-		return {
+export default class PostList extends Component {
+
+	constructor( props ) {
+		super( props );
+
+		this.state = {
 			posts: PostsEditStore
 		};
-	},
-	componentDidMount: function() {
+
+		this._onChange = this._onChange.bind( this );
+	}
+
+	componentDidMount() {
 		PostsEditStore.on( 'add remove reset change', this._onChange );
 
 		if ( PostsEditStore.length <= 1 ) {
@@ -23,46 +27,32 @@ module.exports = React.createClass( {
 				}
 			} );
 		}
-	},
-	componentWillUnmount: function() {
+	}
+
+	componentWillUnmount() {
 		PostsEditStore.off( 'add remove reset change', this._onChange );
-	},
-	render: function() {
+	}
+
+	render() {
 		if ( ! this.state.posts.length ) {
 			return null;
 		}
 
-		var items = [];
-
-		this.state.posts.each( function( post ) {
-			items.push(
-				el( ListItem, {
-					key: post.id,
-					post: post
-				} )
-			);
-
-			if ( post.id === PostEditStore.id ) {
-				items.push(
-					el( 'div', {
-						key: 'context',
-						className: 'post-meta'
-					},
-						el( 'div', { className: 'dashicons dashicons-arrow-down' } )
-					)
-				);
-			}
-		} );
-
 		return (
 			el( Scrollable, { className: 'the-list' },
-				items
+				this.state.posts.map( post =>
+					el( ListItem, {
+						key: post.id,
+						post: post.attributes
+					} )
+				)
 			)
 		);
-	},
-	_onChange: function() {
+	}
+
+	_onChange() {
 		this.setState( {
 			posts: PostsEditStore
 		} );
 	}
-} );
+}

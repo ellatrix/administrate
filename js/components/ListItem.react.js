@@ -13,57 +13,42 @@ export default class PostCard extends Component {
 		this.state = {
 			open: false
 		};
+
+		this._onClick = this._onClick.bind( this );
 	}
 
 	render() {
-		var title, status, _status, _moment, date;
+		const { id, title, date, status } = this.props.post;
 
-		if ( ! this.props.post.get( 'title' ) ) {
+		var dateMoment = moment( date );
+		var dateLabel;
+
+		if ( ! title ) {
 			return null;
 		}
 
-		title = this.props.post.get( 'title' ).raw || __( '(no title)' );
-		_status = this.props.post.get( 'status' );
-		_moment = moment( this.props.post.get( 'date' ) );
-
-		if ( _moment.isAfter() ) {
-			_status = 'sheduled';
-			status = window._postStati.future.label;
-			date = _moment.format( 'LLL' );
-		} else if ( _status === 'publish' ) {
-			date = _moment.format( 'LL' );
-		} else {
-			status = window._postStati[ _status ].label;
-		}
-
-		if ( status ) {
-			status = (
-				el( 'span', { className: 'status' },
-					status
-				)
-			);
-		}
-
-		if ( date ) {
-			date = (
-				el( 'span', { className: 'date' },
-					date
-				)
-			);
+		if ( dateMoment.isAfter() ) {
+			dateLabel = dateMoment.format( 'LLL' );
+		} else if ( status === 'publish' ) {
+			dateLabel = dateMoment.format( 'LL' );
 		}
 
 		return (
 			el( A, {
-				className: cx( [ _status, cx( { 'open': this.state.open } ) ] ),
-				href: 'posts/' + this.props.post.get( 'id' ) + '/' + window.location.search,
+				className: cx( [ status, cx( { 'open': this.state.open } ) ] ),
+				href: 'posts/' + id + '/' + window.location.search,
 				onClick: this._onClick
 			},
 				el( 'div', { className: 'title' },
-					title
+					title.raw || __( '(no title)' )
 				),
 				el( 'div', null,
-					status,
-					date
+					status === 'publish' ? null : el( 'span', { className: 'status' },
+						window._postStati[ status ].label
+					),
+					dateLabel ? el( 'span', { className: 'date' },
+						dateLabel
+					) : null
 				)
 			)
 		);
