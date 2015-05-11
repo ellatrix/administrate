@@ -1,10 +1,9 @@
-var React = require( 'react' );
-var el = React.createElement;
-var A = require( './Link.react' );
+import { default as React, createElement as el } from 'react';
+import A from './Link.react';
 import { __ } from '../utils/l10n';
-var moment = require( 'moment' );
-var cx = require( '../utils/cx' );
-var PostEditStore = require( '../stores/PostEditStore' );
+import moment from 'moment';
+import cx from '../utils/cx';
+import PostEditStore from '../stores/PostEditStore';
 
 module.exports = React.createClass( {
 	getInitialState: function() {
