@@ -1,38 +1,48 @@
 var React = require( 'react' );
 var el = React.createElement;
-var RouterStore = require( '../stores/RouterStore' );
+
+var PostsEditStore = require( '../stores/PostsEditStore' );
+var PostEditStore = require( '../stores/PostEditStore' );
 
 module.exports = React.createClass( {
-	getInitialState: function() {
-		return {
-			route: RouterStore.get( 'route' )
-		};
-	},
-	componentDidMount: function() {
-		RouterStore.on( 'change', this._onChange );
-	},
-	componentWillUnmount: function() {
-		RouterStore.off( 'change', this._onChange );
+	componentWillReceiveProps: function( nextProps ) {
+		var id = nextProps.params.id;
+		var post;
+
+		if ( id ) {
+			post = PostsEditStore.get( { id: id } );
+
+			if ( post ) {
+				PostEditStore.clear().set( post.attributes );
+			} else {
+				PostEditStore.clear().set( { id: id } );
+
+				if ( id ) {
+					PostEditStore.fetch( {
+						data: {
+							context: 'edit'
+						}
+					} );
+				}
+			}
+		}
+
+
 	},
 	render: function() {
-		if ( this.state.route === 'media' ) {
-			return (
-				el( 'div', { className: 'body' },
-					el( require( './Media.react' ) )
-				)
-			);
-		} else {
+		// if ( this.state.route === 'media' ) {
+		// 	return (
+		// 		el( 'div', { className: 'body' },
+		// 			el( require( './Media.react' ) )
+		// 		)
+		// 	);
+		// } else {
 			return (
 				el( 'div', { className: 'body' },
 					el( require( './ListPanel.react' ) ),
 					el( require( './Content.react' ) )
 				)
 			);
-		}
-	},
-	_onChange: function() {
-		this.setState( {
-			route: RouterStore.get( 'route' )
-		} );
+		// }
 	}
 } );

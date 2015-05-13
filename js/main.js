@@ -1,7 +1,8 @@
-import { render, createElement as el } from 'react';
-import $ from 'jquery';
-import Main from './components/Main.react';
-import observer from './utils/observer';
+import { render, createElement as el } from 'react'
+import observer from './utils/observer'
+import { Route, run, HistoryLocation } from 'react-router'
+import Main from './components/Main.react'
+import Body from './components/Body.react'
 
 // observer.observe( document, {
 // 	attributes: true,
@@ -10,14 +11,24 @@ import observer from './utils/observer';
 // } );
 
 // Localise Moment.js.
-import './utils/moment';
+import './utils/moment'
 
-// Render the UI.
-render( el( Main ), document.getElementById( 'root' ) );
-document.body.removeChild( document.getElementById( 'root-loader' ) );
+var routes = (
+	el( Route, { path: window._settings.root, handler: Main },
+		el( Route, { name: 'posts', path: 'posts/', handler: Body } ),
+		el( Route, { name: 'post', path: 'posts/:id/', handler: Body } ),
+		el( Route, { name: 'pages', path: 'pages/', handler: Body } ),
+		el( Route, { name: 'comments', path: 'comments/', handler: Body } ),
+		el( Route, { name: 'media', path: 'media/', handler: Body } ),
+		el( Route, { name: 'appearance', path: 'appearance/', handler: Body } ),
+		el( Route, { name: 'plugins', path: 'plugins/', handler: Body } ),
+		el( Route, { name: 'settings', path: 'settings/', handler: Body } ),
+		el( Route, { name: 'help', path: 'help/', handler: Body } )
+	)
+);
 
-// Start the router.
-import './router/main';
+run( routes, HistoryLocation, Root => {
+	render( el( Root ), document.getElementById( 'root' ) )
+} );
 
-// Start history.
-import './utils/history';
+document.body.removeChild( document.getElementById( 'root-loader' ) )

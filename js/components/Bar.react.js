@@ -1,5 +1,5 @@
 import React from 'react';
-import A from './Link.react';
+import { Link } from 'react-router';
 
 var el = React.createElement;
 
@@ -11,41 +11,41 @@ export default React.createClass( {
 	render() {
 		return (
 			el( 'div', { className: 'bar' },
-				el( A, {
-					href: '',
+				el( Link, {
+					to: '/',
 					className: 'dashicons dashicons-wordpress'
 				} ),
-				el( A, {
-					href: 'posts',
+				el( Link, {
+					to: 'posts',
 					className: 'dashicons dashicons-admin-post'
 				} ),
-				el( A, {
-					href: 'pages',
+				el( Link, {
+					to: 'pages',
 					className: 'dashicons dashicons-admin-page'
 				} ),
-				el( A, {
-					href: 'comments',
+				el( Link, {
+					to: 'comments',
 					className: 'dashicons dashicons-admin-comments'
 				} ),
-				el( A, {
-					href: 'media',
+				el( Link, {
+					to: 'media',
 					className: 'dashicons dashicons-admin-media'
 				} ),
 				el( 'div', { className: 'bar-right' },
-					el( A, {
-						href: 'appearance',
+					el( Link, {
+						to: 'appearance',
 						className: 'dashicons dashicons-admin-appearance'
 					} ),
-					el( A, {
-						href: 'plugins',
+					el( Link, {
+						to: 'plugins',
 						className: 'dashicons dashicons-admin-plugins'
 					} ),
-					el( A, {
-						href: 'settings',
+					el( Link, {
+						to: 'settings',
 						className: 'dashicons dashicons-admin-settings'
 					} ),
-					el( A, {
-						href: 'help',
+					el( Link, {
+						to: 'help',
 						className: 'dashicons dashicons-editor-help'
 					} ),
 					el( 'img', {

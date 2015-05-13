@@ -5,7 +5,6 @@ var jQuery = require( 'jquery' );
 var TinyMCE = require( './tinymce/tinymce.react' );
 var PostEditStore = require( '../stores/PostEditStore' );
 var PostsEditStore = require( '../stores/PostsEditStore' );
-var RouterStore = require( '../stores/RouterStore' );
 import { __ } from '../utils/l10n';
 var _ = require( 'underscore' );
 
@@ -23,10 +22,6 @@ module.exports = React.createClass( {
 	},
 	render: function() {
 		var buttons;
-
-		if ( RouterStore.get( 'route' ) !== 'posts' && RouterStore.get( 'route' ) !== 'pages' ) {
-			return null;
-		}
 
 		if ( this.state.post.get( 'status' ) === 'draft' ) {
 			buttons = (
