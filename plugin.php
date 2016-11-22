@@ -17,8 +17,9 @@ require 'Mustache/Autoloader.php';
 
 Mustache_Autoloader::register();
 
-register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
+register_activation_hook( __FILE__, 'administrate_init' );
 register_activation_hook( __FILE__, 'flush_rewrite_rules' );
+register_deactivation_hook( __FILE__, 'flush_rewrite_rules' );
 
 add_action( 'admin_menu', 'administrate_menu' );
 
