@@ -1,0 +1,42 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <script>document.documentElement.className = 'js'</script>
+    <meta charset="utf-8">
+    <title>{{#__}}Posts{{/__}}</title>
+    <link rel="stylesheet" href="{{plugin_url}}normalize.css">
+    <link rel="stylesheet" href="{{plugin_url}}base.css">
+    <link rel="stylesheet" href="{{plugin_url}}post.css">
+    <link rel="stylesheet" href="{{includes_url}}css/buttons.css">
+    <link rel="stylesheet" href="{{admin_url}}css/forms.css">
+    <link rel="stylesheet" href="{{includes_url}}css/dashicons.css">
+  </head>
+  <body class="wp-core-ui">
+    <nav class="top-nav">
+      <ol class="top-nav-breadcrumbs">
+        <li><a href="{{administrate_url}}">{{#__}}Dashboard{{/__}}</a></li>
+        <li><a href="{{administrate_url}}posts">{{#__}}Posts{{/__}}</a></li>
+      </ol>
+      <ul class="top-nav-user">
+        <li><a href="{{administrate_url}}users/me">{{#__}}Howdy, {{me.name}}{{/__}}<img alt="{{me.name}}" src="{{me.avatar_urls.24}}" srcset="{{me.avatar_urls.48}} 2x" height="20" width="20"></a></li>
+      </ul>
+    </nav>
+    <form>
+      <main>
+        <ul>
+          {{#object}}<li>
+            <a href="{{administrate_url}}posts/{{id}}">{{{title.rendered}}}{{^title.rendered}}{{#__}}(no title){{/__}}{{/title.rendered}}</a> — {{#date_long}}{{date}}{{/date_long}}
+          </li>{{/object}}
+          {{^object}}<li>
+            {{#__}}No posts.{{/__}}
+          </li>{{/object}}
+        </ul>
+        <form>
+          <a class="button" href="{{administrate_url}}posts?{{prev_url}}">‹</a>
+          <input type="number" name="page" min="1" max="{{page_count}}" value="{{page}}"> of {{page_count}}
+          <a class="button" href="{{administrate_url}}posts?{{next_url}}">›</a>
+        </form>
+      </main>
+    </form>
+  </body>
+</html>

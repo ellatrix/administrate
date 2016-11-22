@@ -1,0 +1,93 @@
+body {
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen-Sans", "Ubuntu", "Cantarell", "Helvetica Neue", sans-serif;
+  font-size: 1em;
+  line-height: 1.3em;
+}
+
+main {
+  max-width: 45em;
+  margin: 0 auto;
+}
+
+.top-nav {
+  height: 32px;
+  background: #23282d;
+  color: #eee;
+  width: 100%;
+  font-size: 14px;
+}
+
+.top-nav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ol.top-nav-breadcrumbs,
+ul.top-nav-user {
+  margin: 0;
+  padding: 0;
+}
+
+ol.top-nav-breadcrumbs li {
+  display: inline-block;
+  position: relative;
+  margin-right: 20px;
+  float: left;
+}
+
+ul.top-nav-user li {
+  display: inline-block;
+}
+
+ol.top-nav-breadcrumbs li a,
+ul.top-nav-user li a {
+  display: block;
+  padding: 6px 8px;
+}
+
+ol.top-nav-breadcrumbs li:after {
+  content: '\f139';
+  position: absolute;
+  top: 6px;
+  right: -20px;
+  color: #ccc;
+}
+
+ul.top-nav-user li a:hover,
+ol.top-nav-breadcrumbs li a:hover {
+  background: #32373c;
+  color: #00b9eb;
+}
+
+ol.top-nav-breadcrumbs li:last-child:after {
+  content: '';
+}
+
+ol.top-nav-breadcrumbs li:after {
+  display: inline-block;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    line-height: 1;
+    font-family: dashicons;
+    text-decoration: inherit;
+    font-weight: normal;
+    font-style: normal;
+    vertical-align: top;
+    text-align: center;
+    /*-webkit-transition: color .1s ease-in 0;
+    transition: color .1s ease-in 0;*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.top-nav-user {
+  float: right;
+}
+
+.top-nav-user img {
+  vertical-align: top;
+  margin-left: 8px;
+  border-radius: 10px;
+}

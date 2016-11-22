@@ -1,0 +1,75 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <script>document.documentElement.className = 'js'</script>
+    <meta charset="utf-8">
+    <title>{{#__}}Edit Post{{/__}}</title>
+    <link rel="stylesheet" href="{{plugin_url}}normalize.css">
+    <link rel="stylesheet" href="{{plugin_url}}base.css">
+    <link rel="stylesheet" href="{{plugin_url}}post.css">
+    <link rel="stylesheet" href="{{includes_url}}css/buttons.css">
+    <link rel="stylesheet" href="{{includes_url}}css/dashicons.css">
+    <link rel="stylesheet" href="{{includes_url}}css/editor.css">
+    <link rel="stylesheet" href="{{includes_url}}css/editor.css">
+  </head>
+  <body class="wp-core-ui">
+    <nav class="top-nav">
+      <ol class="top-nav-breadcrumbs">
+        <li><a href="{{administrate_url}}">{{#__}}Dashboard{{/__}}</a></li>
+        <li><a href="{{administrate_url}}posts">{{#__}}Posts{{/__}}</a></li>
+        <li><a href="{{administrate_url}}posts/{{object.id}}">{{#__}}Edit{{/__}}</a></li>
+      </ol>
+      <ul class="top-nav-user">
+        <li><a href="{{administrate_url}}users/me">{{#__}}Howdy, {{me.name}}{{/__}}<img alt="{{me.name}}" src="{{me.avatar_urls.24}}" srcset="{{me.avatar_urls.48}} 2x" height="20" width="20"></a></li>
+      </ul>
+    </nav>
+    {{#object}}<form method="post">
+      <nav class="post-nav">
+        <div>
+          <a href="" class="active">{{#__}}Writing{{/__}}</a>
+          <a href="">{{#__}}Settings{{/__}}</a>
+          <div class="post-actions">
+            <input class="button button-large button-delete" type="submit" name="" value="{{#__}}Delete{{/__}}">
+            <input class="button button-primary button-large" type="submit" name="" value="{{#__}}Publish{{/__}}">
+          </div>
+        </div>
+      </nav>
+      <main>
+        <input type="hidden" name="id" value="{{id}}">
+        <input type="hidden" name="status" value="{{status}}">
+        <div id="editor-toolbar"></div>
+        <h1><input id="title" name="title" type="text" value="{{title.raw}}"></h1>
+        <textarea id="content-input" name="content">{{content.raw}}</textarea>
+        <div id="content"></div>
+      </main>
+    </form>{{/object}}
+    <script src="{{includes_url}}js/utils.js"></script>
+    <script src="{{includes_url}}js/tinymce/tinymce.min.js"></script>
+    <script src="{{plugin_url}}js/tinymce/themes/administrate/toolbar.js"></script>
+    <script src="{{plugin_url}}js/tinymce/themes/administrate/theme.js"></script>
+    <link rel="stylesheet" href="{{includes_url}}js/tinymce/skins/lightgray/skin.min.css">
+    <script>
+      (function (tinymce) {
+        tinymce.PluginManager.add('administrate', function (editor) {
+          editor.on('init', function () {
+            editor.setContent(document.getElementById('content-input').value)
+          })
+        })
+      })(window.tinymce)
+      ;(function (tinymce) {
+        tinymce.suffix = ''
+        tinymce.init({
+          selector: '#content',
+          plugins: 'administrate wordpress wpview wpeditimage wplink',
+          theme: 'administrate',
+          inline: true,
+          menubar: false,
+          toolbar: 'formatselect bold italic bullist numlist blockquote alignleft aligncenter alignright link unlink wp_more',
+          statusbar: false,
+          fixed_toolbar_container: '#editor-toolbar',
+          hidden_input: false
+        })
+      })(window.tinymce)
+    </script>
+  </body>
+</html>
